@@ -39,6 +39,14 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         // Setup country picker
         setupCountryPicker()
+        
+        // Set text field delegates
+        FirstName.delegate = self
+        Email.delegate = self
+        
+        // Add target for real-time validation of Switch and Segmented Control
+        Switch.addTarget(self, action: #selector(switchValueChanged), for: .valueChanged)
+        Radio.addTarget(self, action: #selector(segmentValueChanged), for: .valueChanged)
     }
 
     // Function to add a separator (horizontal rule) below the text field
@@ -122,7 +130,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         Country.resignFirstResponder() // Dismiss the picker
     }
 
-    // UIPickerViewDataSource Methods
+    // MARK: - UIPickerViewDataSource Methods
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -131,7 +139,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         return countries.count
     }
 
-    // UIPickerViewDelegate Methods
+    // MARK: - UIPickerViewDelegate Methods
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return countries[row]
     }
@@ -140,49 +148,73 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         Country.text = countries[row]
     }
 
-    // Function to validate the form fields
-    func validateForm() -> Bool {
-        var isValid = true
-        
-        // First Name Validation
+    // MARK: - Real-time Validation Methods
+
+    // TextField Delegate Method for real-time validation
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == FirstName {
+            validateFirstName()
+        } else if textField == Email {
+            validateEmail()
+        }
+        return true
+    }
+    
+    // TextField Did End Editing
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == FirstName {
+            validateFirstName()
+        } else if textField == Email {
+            validateEmail()
+        }
+    }
+
+    // Switch value changed (Terms and Conditions)
+    @objc func switchValueChanged() {
+        validateSwitch()
+    }
+    
+    // Segment control value changed (Radio buttons)
+    @objc func segmentValueChanged() {
+        // You can add validation logic for segmented control here if needed.
+    }
+    
+    // MARK: - Validation Functions
+
+    func validateFirstName() {
         if let firstName = FirstName.text, firstName.isEmpty {
             firstNameErrorLabel.text = "First Name is required"
             addSeparatorBelow(textField: FirstName, color: UIColor.systemRed)
             setPlaceholderColor(for: FirstName, color: UIColor.systemRed)
-            isValid = false
         } else {
             firstNameErrorLabel.text = ""
             addSeparatorBelow(textField: FirstName) // Reset to default color
-            setPlaceholderColor(for: FirstName, color: UIColor.lightGray) // Reset placeholder color
+            setPlaceholderColor(for: FirstName, color: UIColor.lightGray)
         }
-        
-        // Email Validation
+    }
+    
+    func validateEmail() {
         if let email = Email.text, email.isEmpty {
             emailErrorLabel.text = "Email is required"
             addSeparatorBelow(textField: Email, color: UIColor.systemRed)
             setPlaceholderColor(for: Email, color: UIColor.systemRed)
-            isValid = false
         } else if let email = Email.text, !isValidEmail(email) {
             emailErrorLabel.text = "Enter a valid Email Address"
             addSeparatorBelow(textField: Email, color: UIColor.systemRed)
             setPlaceholderColor(for: Email, color: UIColor.systemRed)
-            isValid = false
         } else {
             emailErrorLabel.text = ""
             addSeparatorBelow(textField: Email) // Reset to default color
-            setPlaceholderColor(for: Email, color: UIColor.lightGray) // Reset placeholder color
+            setPlaceholderColor(for: Email, color: UIColor.lightGray)
         }
-
-
-        // Switch (Terms and Conditions) Validation
+    }
+    
+    func validateSwitch() {
         if !Switch.isOn {
             termsErrorLabel.text = "Please accept terms and conditions"
-            isValid = false
         } else {
             termsErrorLabel.text = ""
         }
-
-        return isValid
     }
 
     // Email validation using regular expression
@@ -193,7 +225,16 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     @IBAction func BtnClicked(_ sender: Any) {
-        if validateForm() {
+        // Perform validation for all fields
+        validateFirstName()
+        validateEmail()
+        validateSwitch()
+
+        // Check if there are no validation errors before proceeding
+        if firstNameErrorLabel.text?.isEmpty == true &&
+           emailErrorLabel.text?.isEmpty == true &&
+           termsErrorLabel.text?.isEmpty == true {
+            
             // Clear all text fields on successful registration
             FirstName.text = ""
             LastName.text = ""
@@ -204,14 +245,20 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             firstNameErrorLabel.text = ""
             emailErrorLabel.text = ""
             termsErrorLabel.text = ""
-            
+
             // Reset the switch and segmented control
             Switch.isOn = false
             Radio.selectedSegmentIndex = -1
 
             // Show success toast message
             CustomToast.showToast(message: "Registered Successfully!", inView: self.view, backgroundColor: UIColor.systemGreen)
+            
+        } else {
+            // Handle the case where validation failed (optional)
+            // You can show an alert or a toast message for incomplete/incorrect form fields
         }
     }
+
+    
 }
 
