@@ -115,16 +115,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9ko-D7-mve">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="341"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="397.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8y9-kY-Uu3" userLabel="ImageView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="165.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="194"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Register" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jsh-TC-1qR" userLabel="RegisterImage">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="165.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="194"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mez-Wx-U5u">
-                                                <rect key="frame" x="10" y="132" width="300" height="33.5"/>
+                                                <rect key="frame" x="10" y="160.5" width="300" height="33.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -142,27 +142,27 @@
                                             <constraint firstItem="jsh-TC-1qR" firstAttribute="leading" secondItem="8y9-kY-Uu3" secondAttribute="leading" id="wWy-96-S1g"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="iKU-yx-9wC" userLabel="InputStack">
-                                        <rect key="frame" x="20" y="175.5" width="280" height="165.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="iKU-yx-9wC" userLabel="InputStack">
+                                        <rect key="frame" x="20" y="204" width="280" height="193.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create your new account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wVk-rZ-AYa">
-                                                <rect key="frame" x="0.0" y="0.0" width="280" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="280" height="29.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter First Name" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z62-lI-TAc">
-                                                <rect key="frame" x="0.0" y="44" width="280" height="33.5"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter First Name *" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z62-lI-TAc">
+                                                <rect key="frame" x="0.0" y="54.5" width="280" height="29.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <textInputTraits key="textInputTraits" textContentType="name"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Last Name" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H1i-Tr-C8E">
-                                                <rect key="frame" x="0.0" y="87.5" width="280" height="34"/>
+                                                <rect key="frame" x="0.0" y="109" width="280" height="30"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <textInputTraits key="textInputTraits" textContentType="family-name"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Email ID" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dfv-qT-scq">
-                                                <rect key="frame" x="0.0" y="131.5" width="280" height="34"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Email ID *" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dfv-qT-scq">
+                                                <rect key="frame" x="0.0" y="164" width="280" height="29.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                                             </textField>
@@ -204,7 +204,7 @@
                             <constraint firstItem="BYe-7l-UYx" firstAttribute="bottom" secondItem="qGn-Mx-PI3" secondAttribute="bottom" constant="40" id="OUI-w8-6kj"/>
                             <constraint firstItem="9ko-D7-mve" firstAttribute="leading" secondItem="BYe-7l-UYx" secondAttribute="leading" id="mvN-pE-lMI"/>
                             <constraint firstItem="qGn-Mx-PI3" firstAttribute="leading" secondItem="BYe-7l-UYx" secondAttribute="leading" constant="20" id="oZQ-de-I53"/>
-                            <constraint firstItem="9ko-D7-mve" firstAttribute="height" secondItem="rQP-wb-0NU" secondAttribute="height" multiplier="0.6" id="pAv-s8-pQk"/>
+                            <constraint firstItem="9ko-D7-mve" firstAttribute="height" secondItem="rQP-wb-0NU" secondAttribute="height" multiplier="0.7" id="pAv-s8-pQk"/>
                             <constraint firstItem="9ko-D7-mve" firstAttribute="top" secondItem="rQP-wb-0NU" secondAttribute="top" id="qgs-DE-ChU"/>
                             <constraint firstItem="9ko-D7-mve" firstAttribute="trailing" secondItem="BYe-7l-UYx" secondAttribute="trailing" id="yCg-gv-yeQ"/>
                         </constraints>
