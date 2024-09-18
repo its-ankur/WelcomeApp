@@ -176,8 +176,16 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     // Segment control value changed (Radio buttons)
     @objc func segmentValueChanged() {
-        // You can add validation logic for segmented control here if needed.
+        // Add logic for segmented control if needed
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Reset the form and error messages
+        resetForm()
+    }
+
     
     // MARK: - Validation Functions
 
@@ -235,28 +243,52 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
            emailErrorLabel.text?.isEmpty == true &&
            termsErrorLabel.text?.isEmpty == true {
             
-            // Clear all text fields on successful registration
-            FirstName.text = ""
-            LastName.text = ""
-            Email.text = ""
-            Country.text = ""
-
-            // Clear error labels
-            firstNameErrorLabel.text = ""
-            emailErrorLabel.text = ""
-            termsErrorLabel.text = ""
-
-            // Reset the switch and segmented control
-            Switch.isOn = false
-            Radio.selectedSegmentIndex = -1
-
-            // Show success toast message
-            CustomToast.showToast(message: "Registered Successfully!", inView: self.view, backgroundColor: UIColor.systemGreen)
+            // Save user details to UserDefaults
+            let userDefaults = UserDefaults.standard
+            userDefaults.set(FirstName.text, forKey: "FirstName")
+            userDefaults.set(LastName.text, forKey: "LastName")
+            userDefaults.set(Email.text, forKey: "Email")
+            userDefaults.set(Country.text, forKey: "Country")
             
-        } else {
-            // Handle the case where validation failed (optional)
-            // You can show an alert or a toast message for incomplete/incorrect form fields
+            // Show success toast message
+            showToast(message: "Registration Successful!")
+            
+            // Reset the form
+                   
+            
+            // Navigate to ShowDetailsViewController
+            if let detailsViewController = self.storyboard?.instantiateViewController(withIdentifier: "ShowDetailsViewController") as? ShowDetailsViewController {
+                navigationController?.pushViewController(detailsViewController, animated: true)
+            }
+//            resetForm()
         }
+    }
+    
+    // Function to show a toast message
+    func showToast(message: String) {
+        CustomToast.showToast(message: message, inView: self.view, backgroundColor: UIColor.systemGreen)
+    }
+    
+    func resetForm() {
+        FirstName.text = ""
+        LastName.text = ""
+        Email.text = ""
+        Country.text = ""
+        Switch.isOn = false
+        Radio.selectedSegmentIndex = UISegmentedControl.noSegment
+        
+        // Clear error labels
+        firstNameErrorLabel.text = ""
+        emailErrorLabel.text = ""
+        termsErrorLabel.text = ""
+        
+        // Reset placeholder colors
+        setPlaceholderColor(for: FirstName, color: UIColor.lightGray)
+        setPlaceholderColor(for: Email, color: UIColor.lightGray)
+        
+        // Remove separators
+        addSeparatorBelow(textField: FirstName)
+        addSeparatorBelow(textField: Email)
     }
 
     
