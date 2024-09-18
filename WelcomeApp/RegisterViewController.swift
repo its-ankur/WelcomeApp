@@ -249,18 +249,18 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             userDefaults.set(LastName.text, forKey: "LastName")
             userDefaults.set(Email.text, forKey: "Email")
             userDefaults.set(Country.text, forKey: "Country")
+            userDefaults.set(Radio.selectedSegmentIndex, forKey: "GenderSelection") // Assuming gender is being selected here
             
             // Show success toast message
             showToast(message: "Registration Successful!")
             
             // Reset the form
-                   
+            resetForm()
             
             // Navigate to ShowDetailsViewController
             if let detailsViewController = self.storyboard?.instantiateViewController(withIdentifier: "ShowDetailsViewController") as? ShowDetailsViewController {
                 navigationController?.pushViewController(detailsViewController, animated: true)
             }
-//            resetForm()
         }
     }
     

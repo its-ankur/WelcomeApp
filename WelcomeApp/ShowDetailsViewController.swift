@@ -14,27 +14,33 @@ class ShowDetailsViewController: UIViewController {
         
         // Set the back button color
         self.navigationController?.navigationBar.tintColor = UIColor.black
-
-
+        
         // Retrieve saved user details from UserDefaults
         let userDefaults = UserDefaults.standard
-        let savedEmail = userDefaults.string(forKey: "email") ?? ""
-        let savedGenderIndex = userDefaults.integer(forKey: "genderSelection")
-        let savedCountry = userDefaults.string(forKey: "country") ?? ""
-        let savedFirst = userDefaults.string(forKey: "firstName") ?? ""
-        let savedLast = userDefaults.string(forKey: "lastName") ?? ""
-
-//         Display the retrieved details in the respective text fields
-        let title="Hi, "+savedFirst+" "+savedLast
+        let savedEmail = userDefaults.string(forKey: "Email") ?? ""
+        let savedGenderIndex = userDefaults.integer(forKey: "GenderSelection")
+        let savedCountry = userDefaults.string(forKey: "Country") ?? ""
+        let savedFirst = userDefaults.string(forKey: "FirstName") ?? ""
+        let savedLast = userDefaults.string(forKey: "LastName") ?? ""
+        
+        // Display the retrieved details in the respective text fields
+        let title = "Hi, \(savedFirst) \(savedLast)"
         EmailShow.text = savedEmail
         CountryShow.text = savedCountry
-        GenderShow.text = genders[savedGenderIndex]
+        
+        if savedGenderIndex >= 0 && savedGenderIndex < genders.count {
+            GenderShow.text = genders[savedGenderIndex]
+        }
+        
         PageTitle.text = title
-
-
+        
+        // Make the text fields non-editable
+        EmailShow.isEnabled = false
+        GenderShow.isEnabled = false
+        CountryShow.isEnabled = false
     }
     
-    // Back button action (optional, depending on how you want to handle back navigation)
+    // Back button action
     @IBAction func backButtonPressed(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
