@@ -31,6 +31,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    private func copyDatabaseIfNeeded() {
+            let fileManager = FileManager.default
+            let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            let databaseURL = documentsURL.appendingPathComponent("UserData.sqlite")
 
+            if !fileManager.fileExists(atPath: databaseURL.path) {
+                if let bundleDatabaseURL = Bundle.main.url(forResource: "UserData", withExtension: "sqlite") {
+                    do {
+                        try fileManager.copyItem(at: bundleDatabaseURL, to: databaseURL)
+                        print("Database copied to Documents directory.")
+                    } catch {
+                        print("Error copying database: \(error)")
+                    }
+                }
+            }
+        }
+    
 }
 

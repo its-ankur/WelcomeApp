@@ -238,18 +238,27 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         validateEmail()
         validateSwitch()
 
-        // Check if there are no validation errors before proceeding
+        // Check if there are no validation errors
         if firstNameErrorLabel.text?.isEmpty == true &&
            emailErrorLabel.text?.isEmpty == true &&
            termsErrorLabel.text?.isEmpty == true {
             
+            // Unwrap and handle optional values
+            let firstName = FirstName.text ?? ""
+            let lastName = LastName.text ?? "" // Optional
+            let email = Email.text ?? ""
+            let country = Country.text ?? "" // Optional
+            let genderIndex = Radio.selectedSegmentIndex
+            let genderString = genderIndex == UISegmentedControl.noSegment ? "" : Radio.titleForSegment(at: genderIndex)! // Optional
+            
+            let termsAccepted = Switch.isOn
+            
+            // Save user details to SQLite database
+            DatabaseHelper.shared.insertUser(firstName: firstName, lastName: lastName, email: email, country: country, gender: genderString, termsAccepted: termsAccepted)
+            
             // Save user details to UserDefaults
             let userDefaults = UserDefaults.standard
-            userDefaults.set(FirstName.text, forKey: "FirstName")
-            userDefaults.set(LastName.text, forKey: "LastName")
-            userDefaults.set(Email.text, forKey: "Email")
-            userDefaults.set(Country.text, forKey: "Country")
-            userDefaults.set(Radio.selectedSegmentIndex, forKey: "GenderSelection") // Assuming gender is being selected here
+            userDefaults.set(email, forKey: "Email")
             
             // Show success toast message
             showToast(message: "Registration Successful!")
@@ -263,6 +272,8 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             }
         }
     }
+
+
     
     // Function to show a toast message
     func showToast(message: String) {

@@ -14,6 +14,10 @@
 		0D62B2742C92F8E200600D06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D62B2732C92F8E200600D06 /* Assets.xcassets */; };
 		0D62B2772C92F8E200600D06 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0D62B2762C92F8E200600D06 /* Base */; };
 		0D656E4A2C9A96F800CB203E /* ShowDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D656E492C9A96F800CB203E /* ShowDetailsViewController.swift */; };
+		0D87B3722C9C00A800685B30 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D87B3712C9C00A800685B30 /* DatabaseHelper.swift */; };
+		0D87B3762C9C072C00685B30 /* User.db in Resources */ = {isa = PBXBuildFile; fileRef = 0D87B3752C9C072C00685B30 /* User.db */; };
+		0D87B3792C9C29EE00685B30 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 0D87B3782C9C29EE00685B30 /* SQLite */; };
+		0D87B37C2C9C2C1400685B30 /* FMDB in Frameworks */ = {isa = PBXBuildFile; productRef = 0D87B37B2C9C2C1400685B30 /* FMDB */; };
 		0D9EBF842C97E90E0011474B /* CustomToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9EBF832C97E90E0011474B /* CustomToast.swift */; };
 		0DCF37362C940178006975E5 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCF37352C940178006975E5 /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
@@ -28,6 +32,8 @@
 		0D62B2762C92F8E200600D06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0D62B2782C92F8E200600D06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D656E492C9A96F800CB203E /* ShowDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsViewController.swift; sourceTree = "<group>"; };
+		0D87B3712C9C00A800685B30 /* DatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
+		0D87B3752C9C072C00685B30 /* User.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = User.db; sourceTree = "<group>"; };
 		0D9EBF832C97E90E0011474B /* CustomToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToast.swift; sourceTree = "<group>"; };
 		0DCF37352C940178006975E5 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -37,6 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D87B3792C9C29EE00685B30 /* SQLite in Frameworks */,
+				0D87B37C2C9C2C1400685B30 /* FMDB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +70,7 @@
 		0D62B2692C92F8DF00600D06 /* WelcomeApp */ = {
 			isa = PBXGroup;
 			children = (
+				0D87B3752C9C072C00685B30 /* User.db */,
 				0D62B26A2C92F8DF00600D06 /* AppDelegate.swift */,
 				0D62B26C2C92F8DF00600D06 /* SceneDelegate.swift */,
 				0D62B26E2C92F8DF00600D06 /* ViewController.swift */,
@@ -72,6 +81,7 @@
 				0DCF37352C940178006975E5 /* RegisterViewController.swift */,
 				0D9EBF832C97E90E0011474B /* CustomToast.swift */,
 				0D656E492C9A96F800CB203E /* ShowDetailsViewController.swift */,
+				0D87B3712C9C00A800685B30 /* DatabaseHelper.swift */,
 			);
 			path = WelcomeApp;
 			sourceTree = "<group>";
@@ -120,6 +130,10 @@
 				Base,
 			);
 			mainGroup = 0D62B25E2C92F8DE00600D06;
+			packageReferences = (
+				0D87B3772C9C29EE00685B30 /* XCRemoteSwiftPackageReference "SQLite" */,
+				0D87B37A2C9C2C1400685B30 /* XCRemoteSwiftPackageReference "fmdb" */,
+			);
 			productRefGroup = 0D62B2682C92F8DE00600D06 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -136,6 +150,7 @@
 			files = (
 				0D62B2742C92F8E200600D06 /* Assets.xcassets in Resources */,
 				0D62B2772C92F8E200600D06 /* Base in Resources */,
+				0D87B3762C9C072C00685B30 /* User.db in Resources */,
 				0D62B2722C92F8DF00600D06 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,6 +165,7 @@
 				0D62B26F2C92F8DF00600D06 /* ViewController.swift in Sources */,
 				0D656E4A2C9A96F800CB203E /* ShowDetailsViewController.swift in Sources */,
 				0D62B26B2C92F8DF00600D06 /* AppDelegate.swift in Sources */,
+				0D87B3722C9C00A800685B30 /* DatabaseHelper.swift in Sources */,
 				0D62B26D2C92F8DF00600D06 /* SceneDelegate.swift in Sources */,
 				0DCF37362C940178006975E5 /* RegisterViewController.swift in Sources */,
 				0D9EBF842C97E90E0011474B /* CustomToast.swift in Sources */,
@@ -373,6 +389,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0D87B3772C9C29EE00685B30 /* XCRemoteSwiftPackageReference "SQLite" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.15.3;
+			};
+		};
+		0D87B37A2C9C2C1400685B30 /* XCRemoteSwiftPackageReference "fmdb" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ccgus/fmdb";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.12;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0D87B3782C9C29EE00685B30 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0D87B3772C9C29EE00685B30 /* XCRemoteSwiftPackageReference "SQLite" */;
+			productName = SQLite;
+		};
+		0D87B37B2C9C2C1400685B30 /* FMDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0D87B37A2C9C2C1400685B30 /* XCRemoteSwiftPackageReference "fmdb" */;
+			productName = FMDB;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0D62B25F2C92F8DE00600D06 /* Project object */;
 }
